@@ -5,6 +5,11 @@ services:
     image: nginx:latest
     ports:
       - "8080:80"   # Accès via http://IP_DU_SERVEUR:8080
+    environment:
+      SERVICE_NAME: ${SERVICE_NAME}
+      APP_COLOR: ${APP_COLOR}
+    volumes:
+      - ${PWD}/index.html.template:/etc/nginx/templates/index.html.template
     deploy:
       replicas: 3   # Lance 3 instances de Nginx pour la redondance
       restart_policy:
