@@ -1,0 +1,13 @@
+services:
+  web-server:
+    image: nginx:latest
+    ports:
+      - "8080:80"   # Accès via http://IP_DU_SERVEUR:8080
+    deploy:
+      replicas: 3   # Lance 3 instances de Nginx pour la redondance
+      restart_policy:
+        condition: on-failure
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: 50M
