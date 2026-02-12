@@ -1,12 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${SERVICE_NAME}</title>
     <style>
-        body { background-color: ${APP_COLOR}; color: white; font-family: sans-serif; }
+        body {
+            background-color: ${APP_COLOR};
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 { margin-bottom: 0.5rem; }
+        p { font-size: 1.2rem; }
     </style>
 </head>
 <body>
-    <h1>Bienvenue sur ${SERVICE_NAME}</h1>
-    <p>Ce message est configuré via Docker Swarm !</p>
+    <div class="container">
+        <h1>Bienvenue sur ${SERVICE_NAME}</h1>
+        <p>Ce message est servi par Nginx configuré via Docker Swarm !</p>
+        <p>Couleur d'ambiance : <strong>${APP_COLOR}</strong></p>
+    </div>
 </body>
 </html>

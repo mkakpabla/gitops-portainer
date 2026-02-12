@@ -12,6 +12,9 @@ services:
       # On injecte la config dans le dossier template de Nginx
       - source: nginx_template
         target: /etc/nginx/templates/index.html.template
+      # Config Nginx personnalisée
+      - source: nginx_conf
+        target: /etc/nginx/conf.d/default.conf
     deploy:
       replicas: 3   # Lance 3 instances de Nginx pour la redondance
       restart_policy:
@@ -24,3 +27,5 @@ services:
 configs:
   nginx_template:
     file: ./index.html.template
+  nginx_conf:
+    file: ./default.conf
