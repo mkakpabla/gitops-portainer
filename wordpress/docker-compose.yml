@@ -1,6 +1,13 @@
 version: '3.8'
 
 services:
+  mariadb:
+    image: mariadb:10.6
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    deploy:
+      replicas: 1
   db:
     image: mariadb:10.6
     environment:
