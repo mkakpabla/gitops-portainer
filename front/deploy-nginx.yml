@@ -8,8 +8,10 @@ services:
     environment:
       SERVICE_NAME: ${SERVICE_NAME}
       APP_COLOR: ${APP_COLOR}
-    volumes:
-      - ./index.html.template:/etc/nginx/templates/index.html.template
+    configs:
+      # On injecte la config dans le dossier template de Nginx
+      - source: nginx_template
+        target: /etc/nginx/templates/index.html.template
     deploy:
       replicas: 3   # Lance 3 instances de Nginx pour la redondance
       restart_policy:
@@ -18,3 +20,7 @@ services:
         limits:
           cpus: '0.1'
           memory: 50M
+
+configs:
+  nginx_template:
+    file: ${PWD}/index.html.template
