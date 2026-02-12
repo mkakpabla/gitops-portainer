@@ -9,7 +9,7 @@ services:
       SERVICE_NAME: ${SERVICE_NAME}
       APP_COLOR: ${APP_COLOR}
     volumes:
-      - ${PWD}/index.html.template:/etc/nginx/templates/index.html.template
+      - ./index.html.template:/etc/nginx/templates/index.html.template
     deploy:
       replicas: 3   # Lance 3 instances de Nginx pour la redondance
       restart_policy:
